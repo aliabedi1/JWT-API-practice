@@ -3,9 +3,9 @@
 namespace App\Providers;
 
 use App\Enums\SystemMessage;
-use Illuminate\Http\Response;
-use Symfony\Component\HttpFoundation\Response as HttpFoundation;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Response;
+use Symfony\Component\HttpFoundation\Response as HttpFoundation;
 
 class AppServiceProvider extends ServiceProvider
 {
