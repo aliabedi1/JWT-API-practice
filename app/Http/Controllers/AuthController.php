@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function __construct(Type $var = null) {
-        $this->var = $var;
+    public function register(Request $request) {
+        
+    }
+
+    public function login(Request $request) {
+        
     }
 }
