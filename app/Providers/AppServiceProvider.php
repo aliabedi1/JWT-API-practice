@@ -48,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
 
         Response::macro('forbidden', fn ($code, $message, $errors = []) => Response::error($code, $message, $errors, HttpFoundation::HTTP_FORBIDDEN));
 
-        Response::macro('unauthorized', fn ($code = SystemMessage::FAIL, $message = __('Username or password is wrong.'), $errors = []) => Response::error($code, $message, $errors, HttpFoundation::HTTP_UNAUTHORIZED));
+        Response::macro('unauthorized', fn ($code = SystemMessage::FAIL, $message, $errors = []) => Response::error($code, $message, $errors, HttpFoundation::HTTP_UNAUTHORIZED));
 
     }
 }
