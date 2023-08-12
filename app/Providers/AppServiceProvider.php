@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
 
         Response::macro('destroy', fn ($message = null) => Response::success(SystemMessage::SUCCESS, $message ?? __('Removed successfully.'), [], HttpFoundation::HTTP_ACCEPTED));
 
-        Response::macro('error', fn ($code = SystemMessage::FAIL, $message, $errors = [], $http_status = HttpFoundation::HTTP_BAD_REQUEST) => Response::make([
+        Response::macro('error', fn ($code, $message, $errors = [], $http_status = HttpFoundation::HTTP_BAD_REQUEST) => Response::make([
             'code' => $code,
             'message' => $message,
             'errors' => (object)$errors
@@ -47,7 +47,8 @@ class AppServiceProvider extends ServiceProvider
         Response::macro('dataNotFound', fn ($errors = []) => Response::error(SystemMessage::DATA_NOT_FOUND, $message = __('Not found.'), $errors, HttpFoundation::HTTP_NOT_FOUND));
 
         Response::macro('forbidden', fn ($code, $message, $errors = []) => Response::error($code, $message, $errors, HttpFoundation::HTTP_FORBIDDEN));
-        Response::macro('unauthorized', fn ($code, $message, $errors = []) => Response::error($code, $message, $errors, HttpFoundation::HTTP_UNAUTHORIZED));
+
+        Response::macro('unauthorized', fn ($code = SystemMessage::FAIL, $message = __('Username or password is wrong.'), $errors = []) => Response::error($code, $message, $errors, HttpFoundation::HTTP_UNAUTHORIZED));
 
     }
 }
