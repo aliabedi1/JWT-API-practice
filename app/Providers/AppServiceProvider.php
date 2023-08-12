@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
 
         Response::macro('destroy', fn ($message = null) => Response::success(SystemMessage::SUCCESS, $message ?? __('Removed successfully.'), [], HttpFoundation::HTTP_ACCEPTED));
 
-        Response::macro('error', fn ($code, $message, $errors = [], $http_status = HttpFoundation::HTTP_BAD_REQUEST) => Response::make([
+        Response::macro('error', fn ($code = SystemMessage::FAIL, $message, $errors = [], $http_status = HttpFoundation::HTTP_BAD_REQUEST) => Response::make([
             'code' => $code,
             'message' => $message,
             'errors' => (object)$errors
