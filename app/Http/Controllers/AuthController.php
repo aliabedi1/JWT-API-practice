@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,7 +20,15 @@ class AuthController extends Controller
         return Response::store('user created successfully.',User::create($inputs));
     }
 
-    public function login(Request $request) {
+    public function login(LoginRequest $request) {
+        $inputs = $request->all();
+
+        return !$token = auth()->attempt($inputs) ? Response::unauthorized(null, __('auth.failed')) : $this->createNewToken($token);
+    }
+    
+
+    private function createNewToken($token)
+    {
         
     }
 }
