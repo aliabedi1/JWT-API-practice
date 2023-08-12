@@ -47,6 +47,7 @@ class AppServiceProvider extends ServiceProvider
         Response::macro('dataNotFound', fn ($errors = []) => Response::error(SystemMessage::DATA_NOT_FOUND, $message = __('Not found.'), $errors, HttpFoundation::HTTP_NOT_FOUND));
 
         Response::macro('forbidden', fn ($code, $message, $errors = []) => Response::error($code, $message, $errors, HttpFoundation::HTTP_FORBIDDEN));
+        Response::macro('unauthorized', fn ($code, $message, $errors = []) => Response::error($code, $message, $errors, HttpFoundation::HTTP_UNAUTHORIZED));
 
     }
 }
