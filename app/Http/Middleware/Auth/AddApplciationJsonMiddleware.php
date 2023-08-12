@@ -16,6 +16,7 @@ class AddApplciationJsonMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request->headers->set('Accept' , 'application/json'));
+        $request->headers->add(['Accept' => 'application/json']);
+        return $next($request);
     }
 }
